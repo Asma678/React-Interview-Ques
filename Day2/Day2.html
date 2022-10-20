@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2</title>
+</head>
+<body>
+    <h1>
+        What is the Difference between react and react native? Which one is library or framework??
+    </h1>
+    <p>ReactJS is an open-source JavaScript library used to build the user interface for Web Applications. It is responsible only for the view layer of the application. It provides developers to compose complex UIs from a small and isolated piece of code called "components." ReactJS made of two parts first is components, that are the pieces that contain HTML code and what you want to see in the user interface, and the second one is HTML document where all your components will be rendered.</p>
+    <p>React Native is an open-source JavaScript framework used for developing a mobile application for iOS Android, and Windows. It uses only JavaScript to build a cross-platform mobile app. React Native is same as React, but it uses native components instead of using web components as building blocks. It targets mobile platforms rather than the browser. </p>
+
+     <br><hr><br>
+
+        <h1>What is the package name you are using for routing?</h1>
+        <p> React Router DOM is an npm package that enables you to implement dynamic routing in a web app. It allows you to display pages and allow users to navigate them.
+        </p>
+        <br> <hr> <br>
+
+        <h1>Routing Implementation</h1>
+
+         <p>Installing React Router: React Router can be installed via npm in your React application. Follow the steps given below to install Router in your React application:</p>
+
+          <p>Step 1: cd into your project directory.</p>
+          <p> Step 2: To install the React Router use the following command:
+            npm install – -save react-router-dom or npm i react-router-dom
+                 (its a updated command)
+          </p>
+          <p>After installing react-router-dom, add its components to your React application.
+
+            Adding React Router Components: The main Components of React Router are:
+            BrowserRouter , Routes , Route , Link</p>
+
+            <p>To add React Router components in your application, open your project directory in the editor you use and go to app.js file. Now, add the below given code in app.js.
+
+                import {
+                    BrowserRouter as Router,
+                    Routes,
+                    Route,
+                    Link
+                } from 'react-router-dom';
+                
+            </p>
+
+            <p>
+                Using React Router: To use React Router, let us first create few components in the react application. In your project directory, create a folder named component inside the src folder and now add 3 files named home.js, about.js and contact.js to the component folder.
+            </p>
+
+            <p>After adding all the components here is our complete source code:<br>
+               
+                import React, { Component } from 'react';
+                import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+                import Home from './component/home';
+                import About from './component/about';
+                import Contact from './component/contact';
+                import './App.css';
+                
+                class App extends Component {
+                render() {
+                    return (
+                    <Router>
+                        <div className="App">
+                            <ul className="App-header">
+                            <li>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/about">About Us</Link>
+                            </li>
+                            <li>
+                                <Link to="/contact">Contact Us</Link>
+                            </li>
+                            </ul>
+                        <Routes>
+                                <Route exact path='/' element={< Home />}></Route>
+                                <Route exact path='/about' element={< About />}></Route>
+                                <Route exact path='/contact' element={< Contact />}></Route>
+                        </Routes>
+                        </div>
+                    </Router>
+                );
+                }
+                }
+                
+                export default App;
+                
+            </p>
+
+
+        <br> <hr> <br>
+
+        <h1>How do you switch/navigate form one component to another in React?</h1>
+        <p>Way to navigate from one page to another page<br>
+            Link: Link is used to manage the navigation and it worked as an anchor tag <br>
+            NavLink:NavLink behaves the same as Link but in addition, it comes with a new attribute called “activeClassName” which helps us to add the class to the anchor tag when page url will match.<br>
+            Redirect Component: Rendering a <Redirect to="/path/to/redirect" /> component is used to manage the redirection. When you manage the redirection through the <Redirect> component then it will override the current location in the history stack.<br>
+            history.push :If you want programmatically navigation from one page to another then you should use history.push method. In other words, we can say if you want to manage the redirection on button click then you can use it. This function will push a new entry in the history stack.<br>
+            history.replace: history.replace function will replace the current location in the history stack and manage the redirection same as the history.push.</p>
+
+        <br> <hr> <br>
+
+        <h1>What is lazy loading in react ??</h1>
+        <p>
+            In essence, lazy loading means that a component or a part of code must get loaded when it is required. It is also referred to as code splitting and data fetching.
+
+            Talking about React specifically, it bundles the complete code and deploys all of it at the same time. Now, usually, that's not a bad idea, since React SPAs (Single page application) are quite small and do not affect the performance. But what if we have a gigantic application, like a content management system with a customer portal, admin portal etc. In such a case, it does not seem like a smart idea to load the complete application.
+        </p>
+
+        <br> <hr> <br>
+
+        <h1>Difference b/w Stateful and stateless Component?</h1>
+        <p>Stateless components are simple functional component without having a local state but remember there is a hook in react 
+            to add state behavior in functional component as well.<br>
+            Stateful component can contains the state object and event handling function, user actions as well.<br>
+            Stateless component are pure in nature which does a very specific task.<br>
+        </p>
+</body>
+</html>
