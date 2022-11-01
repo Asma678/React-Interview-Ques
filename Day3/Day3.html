@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3</title>
+</head>
+<body>
+    <h1>
+        Difference between Axios and fetch?
+    </h1>
+    <p>
+    <div><b>AxiosFetch Differences:</b></div>
+    <table border="1px">
+        <tr>
+            <th>AXIOS</th>
+            <th>FETCH</th>
+        </tr>
+        <tr>
+            <td>Axios has url in request object.</td>
+            <td>Fetch has no url in request object.</td>
+        </tr>
+        <tr>
+            <td>Axios is a stand-alone third party package that can be easily installed</td>
+            <td>Fetch is built into most modern browsers; no installation is required as such.</td>
+        </tr>
+        <tr>
+            <td>Axios enjoys built-in XSRF protection.</td>
+            <td>Fetch does not.</td>
+        </tr>
+        <tr>
+            <td>Axios uses the data property.</td>
+            <td>Fetch uses the body property.</td>
+        </tr>
+        <tr>
+            <td>Axios’ data contains the object.</td>
+            <td>Fetch’s body has to be stringified.</td>
+        </tr>
+        <tr>
+            <td>Axios performs automatic transforms of JSON data.</td>
+            <td>Fetch is a two-step process when handling JSON data- first, to make the actual request; second, to call the .json() method on the response.</td>
+
+        </tr>
+        <tr>
+            <td>Axios allows cancelling request and request timeout.</td>
+            <td>Fetch does not.</td>
+        </tr>
+        <tr>
+            <td>Axios has wide browser support.</td>
+            <td>Fetch only supports Chrome 42+, Firefox 39+, Edge 14+, and Safari 10.1+ (This is known as Backward Compatibility).</td>
+        </tr>
+        <tr>
+            <td>Axios “GET” call can have body Content</td>
+            <td>Fetch “GET” call cannot have body Content</td>
+        </tr>
+    </table>
+  
+    </p>
+     <br><hr><br>
+
+        <h1>What is UseState Hook ?(Implementation)?</h1>
+        <p>
+        </p>
+
+        <br> <hr> <br>
+
+        <h1>What is useEffect Hook ?(Implementation)</h1>
+        <p>The purpose of the useEffect hook is to allow you to perform side effects within a functional components. Examples of side effects you will typically perform in a React application are: data fetching, setting up a subscription, and manually changing the DOM in React components.
+            
+        The useEffect hook can help us accomplish the same task. Below is an example of a functional component that is fetching a list of posts from the JSONPlaceholder API.</p>
+        <p>
+            {% comment %} import { useState, useEffect } from "react";
+            import "./App.css";
+            import axios from "axios";
+            
+            const App = () => {
+              const [myData, setMyData] = useState([]);
+              // using Promises
+            
+              useEffect(() => {
+                axios
+                  .get("https://jsonplaceholder.typicode.com/posts")
+                  .then((response) => setMyData(response.data))
+              }, []);
+            
+            ////Note:when we load our application 1st time then its run else no need to run.thats y we use useEffect n we have our dependecies array
+            
+            //plz subscribe to thapa technical
+              return (
+                <>
+                  <h1>Axios Example</h1>
+            
+                  <div className="grid">
+                    {myData.map((post) => {
+                      const { body, id, title } = post;
+                      return (
+                        <div key={id} className="card">
+                          <h2>{title}</h2>
+                          <p>{body}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            };
+            
+            export default App; {% endcomment %}
+        </p>
+
+        <br> <hr> <br>
+
+        <h1>What is UseReducer Hook ?(Implementation)</h1>
+
+        <p>The useReducer Hook is the better alternative to the useState hook and is generally more preferred over the useState hook when you have complex state-building logic or when the next state value depends upon its previous value or when the components are needed to be optimized.
+            
+        The useReducer hook takes three arguments including reducer, initial state, and the function to load the initial state lazily.</p>
+        <p>
+            {% comment %} import React, { useReducer } from "react";
+
+            // Defining the initial state and the reducer
+            const initialState = 0;
+            const reducer = (state, action) => {
+            switch (action) {
+                case "add":
+                return state + 1;
+                case "subtract":
+                return state - 1;
+                case "reset":
+                return 0;
+                default:
+                throw new Error("Unexpected action");
+            }
+            };
+            
+            const App = () => {
+                // Initialising useReducer hook
+            const [count, dispatch] = useReducer(reducer, initialState);
+            return (
+                <div>
+                <h2>{count}</h2>
+                <button onClick={() => dispatch("add")}>
+                    add
+                </button>
+                <button onClick={() => dispatch("subtract")}>
+                    subtract
+                </button>
+                <button onClick={() => dispatch("reset")}>
+                    reset
+                </button>
+                </div>
+            );
+            };
+            
+            export default App; {% endcomment %}
+            
+        </p>
+
+        <br> <hr> <br>
+
+        <h1>What is UseMemo Hook ?(Implementation)</h1>
+        <p>
+            The React useMemo Hook returns a memoized value.Think of memoization as caching a value so that it does not need to be recalculated.
+            The useMemo Hook only runs when one of its dependencies update.This can improve performance.The useMemo and useCallback Hooks are similar.
+        </p>
+        <p>
+
+{% comment %}
+import React, {useState} from 'react';
+function App() {
+const [number, setNumber] = useState(0)
+const squaredNum = squareNum(number);
+const [counter, setCounter] = useState(0);
+
+// Change the state to the input
+const onChangeHandler = (e) => {
+	setNumber(e.target.value);
+}
+	
+// Increases the counter by 1
+const counterHander = () => {
+	setCounter(counter + 1);
+}
+return (
+	<div className="App">
+	<h1>hi, there</h1>
+	<input type="number" placeholder="Enter a number"
+		value={number} onChange={onChangeHandler}>
+	</input>
+		
+	<div>OUTPUT: {squaredNum}</div>
+	<button onClick= {counterHander}>Counter ++</button>
+	<div>Counter : {counter}</div>
+	</div>
+);
+}
+
+// function to square the value
+function squareNum(number){
+console.log("Squaring will be done!");
+return Math.pow(number, 2);
+}
+
+export default App; {% endcomment %}
+</p>
+ <br> <hr> <br>
+
+        <h1>How do you pass data from parent to child</h1>
+        <p>
+          import React , {useState}from 'react'
+
+
+          const Parent = () => {
+              const [message, setMessage] =useState("JavaScript");
+              const chooseMessage = (message) => {
+                setMessage(message);
+              };
+              return (
+                <div>
+                  <h1><mark>Passing data from Parent to Child:</mark></h1>
+                  <p>we can pass the data from parent to child in the form of props</p>
+                  <h3>{message}</h3>
+                  <Child chooseMessage={chooseMessage} />
+                </div>
+              );
+            };
+            const Child = ({ chooseMessage }) => {
+              let m = 'React.js';
+              return (
+                <div>
+                  <button id="parent" onClick={() => chooseMessage(m)}>Change Message</button>
+                </div>
+              );
+            };
+          
+            export default Parent;          
+        </p>
+</body>
+</html>
